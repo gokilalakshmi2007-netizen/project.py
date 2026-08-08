@@ -1,5 +1,14 @@
-from django.shortcuts import render
-def home(request):
-    return render(request, 'index.html')
+from urllib import request
 
-# Create your views here.
+from django.shortcuts import render
+from customerapp.forms import*
+def index(request):
+    return render(request, "index.html")
+def about(request):
+    return render(request, "about.html")
+def login(request):
+    return render(request, "login.html")
+def products(request):
+    data=Admin_add_product.objects.all
+    return render(request, "products.html",{'data':data})
+

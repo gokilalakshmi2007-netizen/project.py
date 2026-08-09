@@ -2,79 +2,145 @@
 {% block title %}Home{% endblock %}
 {% block content %}
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
     body {
-        font-family: 'Inter', sans-serif;
-        background: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        background: #f8f9fa;
         margin: 0;
         padding: 0;
-        color: #111;
-    }
-    .navbar {
-        display: flex;
-        gap: 15px;
-        padding: 20px 5%;
-        background: #fff;
-        border-bottom: 1px solid #eaeaea;
-    }
-    .navbar a {
-        text-decoration: none;
         color: #333;
-        font-weight: 600;
-        padding: 8px 16px;
-        border-radius: 8px;
-        transition: 0.2s;
     }
-    .navbar a:hover {
-        background: #f0f0f0;
+    body > a {
+        display: inline-block;
+        margin: 20px 10px 0 20px;
+        padding: 10px 20px;
+        text-decoration: none;
+        color: #2d3436;
+        font-weight: 600;
+        font-family: 'Poppins', sans-serif;
+        border-radius: 30px;
+        background: white;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+    }
+    body > a:hover {
+        background: #ff4757;
+        color: white;
+        transform: translateY(-2px);
     }
     .hero {
-        text-align: center;
-        padding: 80px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5rem 10%;
+        background: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+        position: relative;
+        height: 60vh;
+        border-radius: 30px;
+        margin: 2rem;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        overflow: hidden;
+    }
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 100%);
+    }
+    .hero-content {
+        position: relative;
+        z-index: 1;
+        color: white;
+        max-width: 600px;
     }
     .hero h1 {
-        font-size: 3rem;
-        margin-bottom: 10px;
-        font-weight: 600;
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        line-height: 1.2;
     }
     .hero p {
         font-size: 1.2rem;
-        color: #555;
-        margin-bottom: 30px;
+        margin-bottom: 2.5rem;
+        opacity: 0.9;
     }
-    .hero img {
-        width: 100%;
-        max-width: 800px;
-        border-radius: 16px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    }
-    .hero .btn {
-        display: inline-block;
-        background: #000;
-        color: #fff;
-        padding: 12px 24px;
-        border-radius: 8px;
+    .btn-primary {
+        background: #ff4757;
+        color: white;
+        padding: 15px 35px;
+        border-radius: 30px;
         text-decoration: none;
         font-weight: 600;
-        margin-bottom: 40px;
+        font-size: 1.1rem;
+        transition: transform 0.3s, box-shadow 0.3s;
+        display: inline-block;
+        border: none;
     }
-    .hero .btn:hover {
-        background: #333;
+    .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(255, 71, 87, 0.4);
+    }
+    .features {
+        display: flex;
+        justify-content: space-between;
+        padding: 2rem 10% 5rem;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+    .feature-card {
+        background: white;
+        padding: 2.5rem 2rem;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        flex: 1;
+        min-width: 250px;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    }
+    .feature-card img {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 1.5rem;
+    }
+    .feature-card h3 {
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+        color: #2d3436;
+    }
+    .feature-card p {
+        color: #636e72;
+        font-size: 1rem;
+        line-height: 1.6;
     }
 </style>
 
-<div class="navbar">
-    <a href="{% url 'index' %}">Home</a>
-    <a href="{% url 'about' %}">About</a>
-    <a href="{% url 'products' %}">Products</a>
-    <a href="{% url 'login' %}">Login</a>
+{% csrf_token %}
+<div class="hero">
+    <div class="hero-content">
+        <h1>Next-Gen Electronics for a Modern Life</h1>
+        <p>Discover premium gadgets, state-of-the-art tech, and elegant designs all in one place. Redefining your everyday experience.</p>
+        <a href="{% url 'products' %}" class="btn-primary">Shop Now</a>
+    </div>
 </div>
 
-<div class="hero">
-    <h1>Welcome to Our Store</h1>
-    <p>The simplest way to buy what you love.</p>
-    <a href="{% url 'products' %}" class="btn">View Products</a>
-    <br>
-    <img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=1200&q=80" alt="Store Image">
+<div class="features">
+    <div class="feature-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/2769/2769339.png" alt="Fast Shipping">
+        <h3>Fast Delivery</h3>
+        <p>Get your gadgets delivered in record time with our express, reliable shipping worldwide.</p>
+    </div>
+    <div class="feature-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/3209/3209955.png" alt="Secure Payment">
+        <h3>Secure Payment</h3>
+        <p>100% secure payment processing for all your transactions, ensuring peace of mind.</p>
+    </div>
+    <div class="feature-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/1067/1067566.png" alt="24/7 Support">
+        <h3>24/7 Support</h3>
+        <p>Our dedicated support team is always ready to help you out, anytime, anywhere.</p>
+    </div>
 </div>
 {% endblock %}

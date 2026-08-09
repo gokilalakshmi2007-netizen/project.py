@@ -2,65 +2,83 @@
 {% block title %}About Us{% endblock %}
 {% block content %}
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
     body {
-        font-family: 'Inter', sans-serif;
-        background: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        background: #f8f9fa;
         margin: 0;
         padding: 0;
-        color: #111;
-    }
-    .navbar {
-        display: flex;
-        gap: 15px;
-        padding: 20px 5%;
-        background: #fff;
-        border-bottom: 1px solid #eaeaea;
-    }
-    .navbar a {
-        text-decoration: none;
         color: #333;
+    }
+    body > a {
+        display: inline-block;
+        margin: 20px 10px 0 20px;
+        padding: 10px 20px;
+        text-decoration: none;
+        color: #2d3436;
         font-weight: 600;
-        padding: 8px 16px;
-        border-radius: 8px;
-        transition: 0.2s;
+        font-family: 'Poppins', sans-serif;
+        border-radius: 30px;
+        background: white;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
     }
-    .navbar a:hover {
-        background: #f0f0f0;
+    body > a:hover {
+        background: #ff4757;
+        color: white;
+        transform: translateY(-2px);
     }
-    .about-container {
-        max-width: 800px;
-        margin: 60px auto;
-        padding: 0 20px;
-        text-align: center;
+    .about-section {
+        display: flex;
+        align-items: center;
+        padding: 5rem 10%;
+        gap: 4rem;
+        background: white;
+        margin: 2rem 10%;
+        border-radius: 30px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        flex-wrap: wrap;
     }
-    .about-container h1 {
-        font-size: 2.5rem;
-        margin-bottom: 20px;
+    .about-image {
+        flex: 1;
+        min-width: 300px;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
     }
-    .about-container p {
-        font-size: 1.1rem;
-        color: #555;
-        line-height: 1.6;
-        margin-bottom: 40px;
-    }
-    .about-img {
+    .about-image img {
         width: 100%;
-        border-radius: 16px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+    .about-text {
+        flex: 1;
+        min-width: 300px;
+    }
+    .about-text h1 {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+        color: #2d3436;
+        line-height: 1.2;
+    }
+    .about-text p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #636e72;
+        margin-bottom: 1.5rem;
     }
 </style>
 
-<div class="navbar">
-    <a href="{% url 'index' %}">Home</a>
-    <a href="{% url 'about' %}">About</a>
-    <a href="{% url 'products' %}">Products</a>
-    <a href="{% url 'login' %}">Login</a>
-</div>
-
-<div class="about-container">
-    <h1>About Us</h1>
-    <p>We believe in keeping things simple. Our mission is to provide you with the best products without the clutter. Just pure, clean design and high-quality items.</p>
-    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="About Us" class="about-img">
+{% csrf_token %}
+<div class="about-section">
+    <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Our Team">
+    </div>
+    <div class="about-text">
+        <h1>Who We Are</h1>
+        <p>We are a modern e-commerce store dedicated to providing the best electronics and accessories. Our mission is to combine premium quality with sleek design, offering you the best shopping experience possible.</p>
+        <p>Founded with a passion for technology, we strive to bring you the latest innovations that empower your daily life. Join us on our journey to redefine modern living with gadgets that inspire.</p>
+    </div>
 </div>
 {% endblock %}

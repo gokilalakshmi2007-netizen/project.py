@@ -2,92 +2,115 @@
 {% block title %}Login{% endblock %}
 {% block content %}   
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
     body {
-        font-family: 'Inter', sans-serif;
-        background: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
         margin: 0;
         padding: 0;
-        color: #111;
+        min-height: 100vh;
+        backdrop-filter: blur(8px);
+        background-color: rgba(0,0,0,0.4);
+        background-blend-mode: overlay;
     }
-    .navbar {
-        display: flex;
-        gap: 15px;
-        padding: 20px 5%;
-        background: #fff;
-        border-bottom: 1px solid #eaeaea;
-    }
-    .navbar a {
+    body > a {
+        display: inline-block;
+        margin: 20px 10px 0 20px;
+        padding: 10px 20px;
         text-decoration: none;
-        color: #333;
+        color: #2d3436;
         font-weight: 600;
-        padding: 8px 16px;
-        border-radius: 8px;
-        transition: 0.2s;
+        font-family: 'Poppins', sans-serif;
+        border-radius: 30px;
+        background: white;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
     }
-    .navbar a:hover {
-        background: #f0f0f0;
+    body > a:hover {
+        background: #ff4757;
+        color: white;
+        transform: translateY(-2px);
+    }
+    .login-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: calc(100vh - 100px);
     }
     .login-container {
-        max-width: 400px;
-        margin: 80px auto;
-        padding: 40px 20px;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 3.5rem 3rem;
+        border-radius: 25px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        width: 100%;
+        max-width: 450px;
         text-align: center;
-        border: 1px solid #eaeaea;
-        border-radius: 16px;
     }
     .login-container h1 {
-        margin-bottom: 30px;
-        font-size: 2rem;
+        margin-bottom: 2rem;
+        color: #2d3436;
+        font-size: 2.2rem;
+        font-weight: 700;
     }
-    .login-container input {
+    .form-group {
+        margin-bottom: 1.5rem;
+        text-align: left;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: #636e72;
+    }
+    .form-group input {
         width: 100%;
-        padding: 12px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
+        padding: 14px 18px;
+        border: 2px solid #dfe6e9;
+        border-radius: 12px;
         font-size: 1rem;
+        transition: border-color 0.3s;
         box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
     }
-    .login-container button {
+    .form-group input:focus {
+        border-color: #ff4757;
+        outline: none;
+    }
+    .btn-login {
         width: 100%;
-        padding: 12px;
-        background: #000;
-        color: #fff;
+        padding: 14px;
+        background: #ff4757;
+        color: white;
         border: none;
-        border-radius: 8px;
-        font-size: 1rem;
+        border-radius: 12px;
+        font-size: 1.1rem;
         font-weight: 600;
         cursor: pointer;
+        transition: background 0.3s, transform 0.2s;
+        margin-top: 1rem;
     }
-    .login-container button:hover {
-        background: #333;
-    }
-    .login-img {
-        width: 100%;
-        border-radius: 12px;
-        margin-bottom: 20px;
-        height: 150px;
-        object-fit: cover;
+    .btn-login:hover {
+        background: #ff6b81;
+        transform: translateY(-2px);
     }
 </style>
 
-<div class="navbar">
-    <a href="{% url 'index' %}">Home</a>
-    <a href="{% url 'about' %}">About</a>
-    <a href="{% url 'products' %}">Products</a>
-    <a href="{% url 'login' %}">Login</a>
-</div>
-
-<div class="login-container">
-    {% csrf_token %}
-    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" alt="Login Image" class="login-img">
-    <h1>Login</h1>
-    <form>
-        <input type="text" placeholder="Username" required>
-        <input type="password" placeholder="Password" required>
-        <button type="button">Sign In</button>
-    </form>
+<div class="login-wrapper">
+    <div class="login-container">
+        {% csrf_token %}
+        <h1>Welcome Back</h1>
+        <form>
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" placeholder="Enter your username" required>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" placeholder="Enter your password" required>
+            </div>
+            <button type="button" class="btn-login">Sign In</button>
+        </form>
+    </div>
 </div>
 {% endblock %}
   

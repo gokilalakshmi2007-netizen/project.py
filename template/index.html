@@ -1,5 +1,5 @@
 {%extends "master.html"%}
-{% block title %}home{% endblock %}
+{% block title %}index{% endblock %}
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
@@ -38,12 +38,7 @@
     </style>
 </head>
 <body>
-    <nav>
-        <a href="index.html" class="active">Home</a>
-        <a href="products.html">Products</a>
-        <a href="about.html">About</a>
-        <a href="login.html">Login</a>
-    </nav>
+     {% csrf_token %}
     <div class="container medium">
         <h1>Welcome to E-Shop</h1>
         <p>Discover a wide range of premium electronics with modern design and top-notch quality.</p>
@@ -51,4 +46,6 @@
     </div>
 </body>
 </html>
+
    {% endblock %}
+   

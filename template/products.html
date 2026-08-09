@@ -1,6 +1,6 @@
 {%extends "master.html"%}
 {% block title %}products{% endblock %}
-{% block content %}   
+{% block content %}  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,12 +38,7 @@
     </style>
 </head>
 <body>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="products.html" class="active">Products</a>
-        <a href="about.html">About</a>
-        <a href="login.html">Login</a>
-    </nav>
+    {% csrf_token %}
     <div class="container large">
         <h1>Our Products</h1>
         <div class="products-grid">
@@ -71,4 +66,6 @@
     </div>
 </body>
 </html>
- {% endblock %}
+
+   {% endblock %}
+ 

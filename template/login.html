@@ -1,5 +1,5 @@
-{%extends "MASTER.html"%}
-{% block title %}Login{% endblock %}
+{%extends "master.html"%}
+{% block title %}login{% endblock %}
 {% block content %}   
 <!DOCTYPE html>
 <html lang="en">
@@ -38,12 +38,7 @@
     </style>
 </head>
 <body>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="products.html">Products</a>
-        <a href="about.html">About</a>
-        <a href="login.html" class="active">Login</a>
-    </nav>
+    {% csrf_token %}
     <div class="container small">
         <h1 style="margin-bottom: 2rem;">Welcome Back</h1>
         <form>
@@ -60,4 +55,5 @@
     </div>
 </body>
 </html>
-   {% endblock %}
+{% endblock %}
+  

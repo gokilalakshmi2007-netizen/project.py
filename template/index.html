@@ -2,145 +2,207 @@
 {% block title %}Home{% endblock %}
 {% block content %}
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
+    
+    :root {
+        --primary: #6366f1;
+        --primary-hover: #4f46e5;
+        --bg-dark: #0f172a;
+        --card-bg: rgba(30, 41, 59, 0.7);
+        --text-main: #f8fafc;
+        --text-muted: #94a3b8;
+    }
+
     body {
-        font-family: 'Poppins', sans-serif;
-        background: #f8f9fa;
+        font-family: 'Outfit', sans-serif;
+        background-color: var(--bg-dark);
         margin: 0;
         padding: 0;
-        color: #333;
+        color: var(--text-main);
     }
-    body > a {
-        display: inline-block;
-        margin: 20px 10px 0 20px;
-        padding: 10px 20px;
-        text-decoration: none;
-        color: #2d3436;
-        font-weight: 600;
-        font-family: 'Poppins', sans-serif;
-        border-radius: 30px;
-        background: white;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        transition: all 0.3s ease;
-    }
-    body > a:hover {
-        background: #ff4757;
-        color: white;
-        transform: translateY(-2px);
-    }
-    .hero {
+    
+    /* Subtle background animated gradient */
+    .hero-section {
+        position: relative;
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        padding: 5rem 10%;
-        background: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
-        position: relative;
-        height: 60vh;
-        border-radius: 30px;
+        justify-content: center;
+        min-height: 70vh;
+        padding: 2rem 5%;
         margin: 2rem;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        border-radius: 40px;
+        background: linear-gradient(135deg, rgba(15,23,42,0.9) 0%, rgba(30,41,59,0.9) 100%), url('https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=1600&q=80') center/cover;
+        background-blend-mode: overlay;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         overflow: hidden;
+        text-align: center;
     }
-    .hero::before {
+
+    .hero-section::before {
         content: '';
         position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 100%);
+        top: -50%; left: -50%; width: 200%; height: 200%;
+        background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 60%);
+        animation: rotateBg 15s linear infinite;
+        pointer-events: none;
     }
+
+    @keyframes rotateBg {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
     .hero-content {
         position: relative;
-        z-index: 1;
-        color: white;
-        max-width: 600px;
+        z-index: 10;
+        max-width: 800px;
+        animation: fadeIn 1s ease-out forwards;
     }
-    .hero h1 {
-        font-size: 3.5rem;
-        margin-bottom: 1rem;
-        line-height: 1.2;
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
     }
-    .hero p {
-        font-size: 1.2rem;
-        margin-bottom: 2.5rem;
-        opacity: 0.9;
-    }
-    .btn-primary {
-        background: #ff4757;
-        color: white;
-        padding: 15px 35px;
-        border-radius: 30px;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 1.1rem;
-        transition: transform 0.3s, box-shadow 0.3s;
-        display: inline-block;
-        border: none;
-    }
-    .btn-primary:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(255, 71, 87, 0.4);
-    }
-    .features {
-        display: flex;
-        justify-content: space-between;
-        padding: 2rem 10% 5rem;
-        gap: 2rem;
-        flex-wrap: wrap;
-    }
-    .feature-card {
-        background: white;
-        padding: 2.5rem 2rem;
-        border-radius: 20px;
-        text-align: center;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        flex: 1;
-        min-width: 250px;
-        transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .feature-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-    }
-    .feature-card img {
-        width: 70px;
-        height: 70px;
+
+    .hero-content h1 {
+        font-size: 4.5rem;
+        font-weight: 800;
         margin-bottom: 1.5rem;
+        line-height: 1.1;
+        background: linear-gradient(to right, #fff, #a5b4fc);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -1px;
     }
-    .feature-card h3 {
-        margin-bottom: 1rem;
-        font-size: 1.3rem;
-        color: #2d3436;
-    }
-    .feature-card p {
-        color: #636e72;
-        font-size: 1rem;
+
+    .hero-content p {
+        font-size: 1.25rem;
+        color: var(--text-muted);
+        margin-bottom: 3rem;
+        font-weight: 300;
         line-height: 1.6;
+    }
+
+    .btn-premium {
+        display: inline-block;
+        background: var(--primary);
+        color: #fff;
+        padding: 18px 45px;
+        border-radius: 50px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.5);
+        border: 2px solid transparent;
+    }
+
+    .btn-premium:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 20px 35px -5px rgba(99, 102, 241, 0.6);
+        background: var(--primary-hover);
+    }
+
+    /* Features Section */
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2.5rem;
+        padding: 2rem 10% 6rem;
+    }
+
+    .glass-card {
+        background: var(--card-bg);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 30px;
+        padding: 3rem 2rem;
+        text-align: center;
+        transition: all 0.4s ease;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    }
+
+    .glass-card:hover {
+        transform: translateY(-12px);
+        border-color: rgba(99, 102, 241, 0.3);
+        box-shadow: 0 30px 60px rgba(0,0,0,0.4), 0 0 40px rgba(99, 102, 241, 0.1);
+    }
+
+    .icon-wrapper {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 2rem;
+        background: rgba(99, 102, 241, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease;
+    }
+
+    .glass-card:hover .icon-wrapper {
+        transform: scale(1.1) rotate(5deg);
+        background: rgba(99, 102, 241, 0.2);
+    }
+
+    .icon-wrapper img {
+        width: 40px;
+        height: 40px;
+        filter: invert(1) brightness(2);
+    }
+
+    .glass-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+        color: var(--text-main);
+    }
+
+    .glass-card p {
+        color: var(--text-muted);
+        font-size: 1.05rem;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    @media (max-width: 768px) {
+        .hero-content h1 { font-size: 3rem; }
+        .hero-section { min-height: 60vh; padding: 2rem; border-radius: 20px; margin: 1rem; }
+        .features-grid { padding: 2rem 5% 4rem; }
     }
 </style>
 
 {% csrf_token %}
-<div class="hero">
+<section class="hero-section">
     <div class="hero-content">
-        <h1>Next-Gen Electronics for a Modern Life</h1>
-        <p>Discover premium gadgets, state-of-the-art tech, and elegant designs all in one place. Redefining your everyday experience.</p>
-        <a href="{% url 'products' %}" class="btn-primary">Shop Now</a>
+        <h1>Experience the Future of Electronics</h1>
+        <p>Curated premium gadgets, cutting-edge technology, and unmatched design aesthetics. Elevate your digital lifestyle today.</p>
+        <a href="{% url 'products' %}" class="btn-premium">Explore Collection</a>
     </div>
-</div>
+</section>
 
-<div class="features">
-    <div class="feature-card">
-        <img src="https://cdn-icons-png.flaticon.com/512/2769/2769339.png" alt="Fast Shipping">
-        <h3>Fast Delivery</h3>
-        <p>Get your gadgets delivered in record time with our express, reliable shipping worldwide.</p>
+<section class="features-grid">
+    <div class="glass-card">
+        <div class="icon-wrapper">
+            <img src="https://cdn-icons-png.flaticon.com/512/2769/2769339.png" alt="Fast Shipping">
+        </div>
+        <h3>Lightning Delivery</h3>
+        <p>Experience ultra-fast, reliable global shipping to get your new tech instantly.</p>
     </div>
-    <div class="feature-card">
-        <img src="https://cdn-icons-png.flaticon.com/512/3209/3209955.png" alt="Secure Payment">
-        <h3>Secure Payment</h3>
-        <p>100% secure payment processing for all your transactions, ensuring peace of mind.</p>
+    <div class="glass-card">
+        <div class="icon-wrapper">
+            <img src="https://cdn-icons-png.flaticon.com/512/3209/3209955.png" alt="Secure Payment">
+        </div>
+        <h3>Bank-Grade Security</h3>
+        <p>Your transactions are encrypted and secured with top-tier protection standards.</p>
     </div>
-    <div class="feature-card">
-        <img src="https://cdn-icons-png.flaticon.com/512/1067/1067566.png" alt="24/7 Support">
-        <h3>24/7 Support</h3>
-        <p>Our dedicated support team is always ready to help you out, anytime, anywhere.</p>
+    <div class="glass-card">
+        <div class="icon-wrapper">
+            <img src="https://cdn-icons-png.flaticon.com/512/1067/1067566.png" alt="24/7 Support">
+        </div>
+        <h3>Premium 24/7 Support</h3>
+        <p>Our dedicated experts are available around the clock to assist you with everything.</p>
     </div>
-</div>
+</section>
 {% endblock %}

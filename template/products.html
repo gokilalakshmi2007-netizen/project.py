@@ -2,32 +2,6 @@
 {% block title %}Products{% endblock %}
 {% block content %}  
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-    body {
-        font-family: 'Poppins', sans-serif;
-        background: #f8f9fa;
-        margin: 0;
-        padding: 0;
-        color: #333;
-    }
-    body > a {
-        display: inline-block;
-        margin: 20px 10px 0 20px;
-        padding: 10px 20px;
-        text-decoration: none;
-        color: #2d3436;
-        font-weight: 600;
-        font-family: 'Poppins', sans-serif;
-        border-radius: 30px;
-        background: white;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        transition: all 0.3s ease;
-    }
-    body > a:hover {
-        background: #ff4757;
-        color: white;
-        transform: translateY(-2px);
-    }
     .products-container {
         padding: 4rem 10%;
         max-width: 1400px;
@@ -38,73 +12,85 @@
         margin-bottom: 4rem;
     }
     .products-header h1 {
-        font-size: 3rem;
-        color: #2d3436;
+        font-size: 3.5rem;
+        font-weight: 800;
         margin-bottom: 1rem;
+        background: linear-gradient(to right, #fff, #a5b4fc);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -1px;
     }
     .products-header p {
-        font-size: 1.1rem;
-        color: #636e72;
+        font-size: 1.25rem;
+        color: var(--text-muted);
+        font-weight: 300;
     }
     .products-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         gap: 2.5rem;
     }
     .product-card {
-        background: white;
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        transition: transform 0.3s, box-shadow 0.3s;
         display: flex;
         flex-direction: column;
+        overflow: hidden;
+        background: var(--card-bg);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 30px;
+        transition: all 0.4s ease;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.2);
     }
     .product-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        transform: translateY(-12px);
+        border-color: rgba(99, 102, 241, 0.3);
+        box-shadow: 0 30px 60px rgba(0,0,0,0.4), 0 0 40px rgba(99, 102, 241, 0.1);
     }
     .product-img {
         width: 100%;
         height: 250px;
         object-fit: cover;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
     .product-info {
-        padding: 1.5rem;
+        padding: 1.8rem;
         display: flex;
         flex-direction: column;
         flex-grow: 1;
     }
     .product-title {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         font-weight: 600;
         margin-bottom: 0.5rem;
-        color: #2d3436;
+        color: var(--text-main);
     }
     .product-price {
-        font-size: 1.4rem;
-        color: #ff4757;
-        font-weight: 700;
+        font-size: 1.5rem;
+        color: var(--primary);
+        font-weight: 800;
         margin-bottom: 1.5rem;
         margin-top: auto;
     }
     .btn-cart {
         display: block;
         width: 100%;
-        padding: 12px;
-        background: #2d3436;
-        color: white;
+        padding: 14px;
+        background: rgba(99, 102, 241, 0.1);
+        color: var(--primary);
         text-align: center;
         text-decoration: none;
-        border-radius: 12px;
+        border-radius: 16px;
         font-weight: 600;
-        transition: background 0.3s;
-        border: none;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(99, 102, 241, 0.3);
         cursor: pointer;
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
     .btn-cart:hover {
-        background: #ff4757;
+        background: var(--primary);
+        color: white;
+        box-shadow: 0 10px 20px rgba(99, 102, 241, 0.4);
     }
 </style>
 

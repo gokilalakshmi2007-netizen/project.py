@@ -8,10 +8,10 @@
     </title>
 </head>
 <body>
-     <a href="{%url 'home'%}">Home</a>
-        <a href="{%url 'products'%}" class="active">Products</a>
-        <a href="{%url 'about'%}">About</a>
-        <a href="{%url.login%}">Login</a>
+     <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'products' %}" class="active">Products</a>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'login' %}">Login</a>
   {%block content%}{% endblock %}      
     
 </body>
